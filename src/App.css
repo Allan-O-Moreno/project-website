@@ -2,6 +2,19 @@
   text-align: center;
 }
 
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* This ensures that the container takes at least the full height of the viewport */
+}
+
+#root {
+  flex: 1; /* This allows the root container to grow and take up the remaining space */
+}
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -25,7 +38,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #fb6161;
 }
 
 @keyframes App-logo-spin {
