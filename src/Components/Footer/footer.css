@@ -1,9 +1,13 @@
 /* Footer.css */
 
 .footer {
-  background-color: #333;
-  color: #fff;
-  padding: 20px 0;
+    background-color: #00274c;
+    color: #808080;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .container {
@@ -24,7 +28,7 @@
 }
 
 .footer-logo img {
-  width: 30px; /* Adjust the size as needed */
+  width: 50px; /* Adjust the size as needed */
   margin-right: 10px;
 }
 
@@ -41,7 +45,8 @@
 
 .footer-links a {
   text-decoration: none;
-  color: #fff;
+   color: #808080; /* University of Nevada silver color for text */
+  ;
 }
 
 .footer-social a {

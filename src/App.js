@@ -4,6 +4,7 @@ import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import { BrowserRouter as Router, Route, Routes  } from 'react-router-dom';
 import React from 'react';
+import Footer from './Components/Footer/footer';
 // import Footer from './Components/Footer/footer';
 
 const Home = () => <div>Home Page</div>;
@@ -23,6 +24,7 @@ function App() {
           <Route path="/contact" component={Contact} />
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 }
