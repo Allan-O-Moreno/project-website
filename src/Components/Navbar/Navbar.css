@@ -1,43 +1,44 @@
 /* Navbar.css */
+/* Navbar.css */
 
 .navbar {
     background-color: #00274c; /* University of Nevada navy color */
     color: #808080; /* University of Nevada silver color for text */
     padding: 10px 0;
-    border-radius: 10px; /* Add rounded corners */
-}
-
-.container {
+  }
+  
+  .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.navbar-brand a {
+  }
+  
+  .navbar-brand a {
     text-decoration: none;
     color: #808080; /* University of Nevada silver color for text */
     font-size: 1.5rem;
-}
-
-.navbar-links ul {
+  }
+  
+  .navbar-links ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
     display: flex;
-}
-
-.navbar-links li {
+  }
+  
+  .navbar-links li {
     margin-right: 30px;
-}
-
-.navbar-links a {
+  
+  }
+  
+  .navbar-links a {
     text-decoration: none;
     color: #AAAAAA; /* University of Nevada silver color for text */
     font-size: 1rem;
-}
+  }
+  
 
-.navbar-brand img {
+  .navbar-brand img {
     width: 55px; /* Adjust the width as needed */
     height: auto;
-    border-radius: 50%; /* Make the image round */
-}
+  }
