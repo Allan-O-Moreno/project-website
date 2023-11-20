@@ -20,20 +20,14 @@ const Footer = () => {
               <li><a href="/contact">Contact</a></li>
             </ul>
           </div>
-          {/* <div className="footer-social">
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-facebook"></i>
+          <div className="footer-social">
+            <a href="https://www.linkedin.com/in/allan-moreno-5106a4187/" target="_blank" rel="noopener noreferrer">
+            <i className="fa-brands fa-linkedin">linkedin</i>
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-linkedin"></i>
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
+            {/* <a href="#" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-instagram"></i>
-            </a>
-          </div> */}
+            </a> */}
+          </div> 
         </div>
 
       </div>

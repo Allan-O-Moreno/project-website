@@ -14,5 +14,13 @@ body {
 }
 
 
+.Details {
+  color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Optionally, to center vertically within the viewport */
 
+}
 

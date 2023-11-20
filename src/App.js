@@ -24,6 +24,12 @@ function App() {
           <Route path="/contact" component={Contact} />
         </Routes>
       </div>
+      <div className = "Details"> 
+      <p >
+      Website in progress 
+      </p>
+
+      </div>
       <Footer />
     </Router>
   );

@@ -41,6 +41,7 @@
 .footer-links li {
   display: inline-block;
   margin-right: 20px;
+
 }
 
 .footer-links a {
@@ -50,7 +51,7 @@
 }
 
 .footer-social a {
-  color: #fff;
+  color:  #808080;
   margin-right: 10px;
   text-decoration: none;
 }
