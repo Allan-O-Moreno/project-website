@@ -9,7 +9,6 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="container">
         <div className="navbar-brand">
-        <img src="/MyLogo2.png" alt="Your Logo" />
         </div>
         <div className="navbar-links">
           <ul>

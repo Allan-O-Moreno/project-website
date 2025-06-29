@@ -3,11 +3,8 @@
 .footer {
     background-color: #00274c;
     color: #808080;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    padding: 10px 0;
+    border-radius: 9999px; /* fully rounded */
 }
 
 .container {
@@ -18,8 +15,9 @@
 
 .footer-content {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 40px; /* optional spacing between sections */
 }
 
 .footer-logo {
@@ -28,8 +26,8 @@
 }
 
 .footer-logo img {
-  width: 50px; /* Adjust the size as needed */
-  margin-right: 10px;
+    width: 55px; /* Adjust the width as needed */
+    height: auto;
 }
 
 .footer-links ul {

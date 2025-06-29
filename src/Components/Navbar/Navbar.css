@@ -5,6 +5,7 @@
     background-color: #00274c; /* University of Nevada navy color */
     color: #808080; /* University of Nevada silver color for text */
     padding: 10px 0;
+    border-radius: 9999px; /* fully rounded */
   }
   
   .container {

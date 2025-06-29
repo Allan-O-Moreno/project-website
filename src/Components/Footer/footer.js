@@ -21,9 +21,9 @@ const Footer = () => {
             </ul>
           </div>
           <div className="footer-social">
-            <a href="https://www.linkedin.com/in/allan-moreno-5106a4187/" target="_blank" rel="noopener noreferrer">
+            {/* <a href="https://www.linkedin.com/in/allan-moreno-5106a4187/" target="_blank" rel="noopener noreferrer">
             <i className="fa-brands fa-linkedin">linkedin</i>
-            </a>
+            </a> */}
             {/* <a href="#" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-instagram"></i>
             </a> */}

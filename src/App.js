@@ -16,6 +16,10 @@ function App() {
   return (
     <Router>
       <div id="root">
+        <div className="logo-container">
+          <img src="/MyLogo2.png" className='logo' alt="Your Logo" />
+        </div>
+
         <Navbar />
         <Routes>
           <Route path="/" exact component={Home} />

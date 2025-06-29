@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: rgb(43, 42, 42); /* Change the background color to grey */
+  background-color:white; /* Change the background color to grey */
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* This ensures that the container takes at least the full height of the viewport */
@@ -12,7 +12,6 @@ body {
 #root {
   flex: 1; /* This allows the root container to grow and take up the remaining space */
 }
-
 
 .Details {
   color: white;
@@ -24,3 +23,13 @@ body {
 
 }
 
+.logo-container {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center;     /* center vertically */
+}
+.logo{
+  width: 55px; /* Adjust the width as needed */
+  height: auto;
+  margin-right: 10px; /* Optional: space between logo and text */
+}
