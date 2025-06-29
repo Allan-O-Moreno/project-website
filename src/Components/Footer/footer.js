@@ -9,9 +9,6 @@ const Footer = () => {
     <footer className="footer">
       <div className="container">
         <div className="footer-content">
-          <div className="footer-logo">
-          <img src="/MyLogo2.png" alt="Your Logo" />
-          </div>
           <div className="footer-links">
             <ul>
               <li><a href="/">Home</a></li>
