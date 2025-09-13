@@ -8,6 +8,7 @@ pnpm-debug.log*
 # Vite
 frontend/dist
 frontend/.vite
+build/
 
 # Python (backend)
 backend/.venv
