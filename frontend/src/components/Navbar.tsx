@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
 
 // function StatusBadge() {
 //   const [online, setOnline] = useState<boolean | null>(null)
