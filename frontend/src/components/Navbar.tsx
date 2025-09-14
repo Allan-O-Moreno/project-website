@@ -1,26 +1,26 @@
 import { NavLink } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
-function StatusBadge() {
-  const [online, setOnline] = useState<boolean | null>(null)
+// function StatusBadge() {
+//   const [online, setOnline] = useState<boolean | null>(null)
 
-  useEffect(() => {
-    fetch('/api/health')
-      .then((r) => r.json())
-      .then((d) => setOnline(d.status === 'ok'))
-      .catch(() => setOnline(false))
-  }, [])
+//   useEffect(() => {
+//     fetch('/api/health')
+//       .then((r) => r.json())
+//       .then((d) => setOnline(d.status === 'ok'))
+//       .catch(() => setOnline(false))
+//   }, [])
 
-  const color = online == null ? '#a0a0a0' : online ? '#22c55e' : '#ef4444'
-  const text = online == null ? 'Checking' : online ? 'Online' : 'Offline'
+//   const color = online == null ? '#a0a0a0' : online ? '#22c55e' : '#ef4444'
+//   const text = online == null ? 'Checking' : online ? 'Online' : 'Offline'
 
-  return (
-    <span className="status-badge" title={`API: ${text}`}>
-      <span className="dot" style={{ backgroundColor: color }} />
-      <span className="status-text">API: {text}</span>
-    </span>
-  )
-}
+//   return (
+//     <span className="status-badge" title={`API: ${text}`}>
+//       <span className="dot" style={{ backgroundColor: color }} />
+//       <span className="status-text">API: {text}</span>
+//     </span>
+//   )
+// }
 
 export default function Navbar() {
   return (
