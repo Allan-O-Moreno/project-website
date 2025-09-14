@@ -36,30 +36,23 @@ body {
 
 .navbar {
   position: sticky;
-  top: 10px;
-  z-index: 10;
-  background: transparent;
-  border: none;
-  padding: 0 12px;
+  top: 0;
+  z-index: 20;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
 }
 
 .nav-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* left brand, centered links, right actions */
   align-items: center;
-  justify-content: space-between;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 10px 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  backdrop-filter: saturate(180%) blur(6px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  padding: 12px 20px;
+  gap: 12px;
 }
 
 .nav-brand {
-  font-weight: 700;
-  letter-spacing: 0.3px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -72,17 +65,46 @@ body {
   border-radius: 6px;
 }
 
-.nav-links { display: flex; gap: 14px; }
+.brand-text { display: inline-grid; line-height: 1; font-weight: 800; letter-spacing: 0.5px; }
+.brand-text .brand-sub { font-size: 10px; font-weight: 600; color: var(--muted); letter-spacing: 1.1px; }
+
+.nav-links { display: flex; gap: 28px; justify-self: center; }
 
 .nav-link {
   color: var(--muted);
   text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 999px;
-  transition: color 0.15s ease, background 0.15s ease;
+  font-weight: 600;
+  padding: 8px 0;
+  transition: color 0.15s ease, opacity 0.15s ease;
 }
-.nav-link:hover { color: var(--text); background: rgba(220,38,38,0.08); }
-.nav-link.active { color: var(--text); background: rgba(220,38,38,0.18); }
+.nav-link:hover { color: var(--text); }
+.nav-link.active { color: var(--text); }
+.nav-link .plus { color: var(--muted); margin-left: 4px; }
+
+.nav-actions { display: inline-flex; gap: 12px; justify-self: end; align-items: center; }
+.search-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.search-btn:hover { background: rgba(0,0,0,0.04); }
+
+.cta-btn {
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--brand), var(--brand-weak));
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+.cta-btn:hover { filter: brightness(1.05); }
 
 .status-badge {
   display: inline-flex;
