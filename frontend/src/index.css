@@ -1,169 +1,354 @@
+/* Base reset and modern defaults */
+*, *::before, *::after { box-sizing: border-box; }
+html:focus-within { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* Token palettes and Bootstrap variable hooks */
 :root {
   color-scheme: light dark;
-  --bg: #0a0a0a;
-  --surface: #111214;
-  --text: #e8e8e8;
-  --muted: #a0a0a0;
-  --brand: #dc2626;
-  --brand-weak: #ef4444;
-  --border: #2a2a2a;
+  --font-sans: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+
+  /* RedLine dark tokens */
+  --dm-bg: #1f0d0b;            /* page background */
+  --dm-bg-light: #2a110f;      /* surfaces, inputs */
+  --dm-bg-card: #311512;       /* cards */
+  --dm-text: #fbece6;          /* primary text */
+  --dm-border: #4b201b;        /* borders */
+  --dm-shadow: 0 1px 2px rgba(0,0,0,0.6); /* subtler elevation */
+  --dm-accent: #3a1613;        /* subtle accents */
+  --dm-input: #2f1411;         /* inputs slightly lighter than cards */
+
+  /* RedLine light tokens */
+  --lm-bg: #fff6f3;            /* page background */
+  --lm-bg-light: #ffffff;      /* surfaces, inputs */
+  --lm-bg-card: #ffede7;       /* cards */
+  --lm-text: #3c0f0c;          /* primary text */
+  --lm-text-muted: #a86b64;    /* secondary text */
+  --lm-border: #f4c7bd;        /* borders */
+  --lm-shadow: 0 1px 3px rgba(193,70,59,0.15); /* subtler elevation */
+  --lm-accent: #ffe0d8;        /* subtle accents */
+
+  /* Semantic mapping (default to light) */
+  --bg: var(--lm-bg);
+  --bg-light: var(--lm-bg-light);
+  --bg-card: var(--lm-bg-card);
+  --text: var(--lm-text);
+  --text-muted: var(--lm-text-muted);
+  --border: var(--lm-border);
+  --shadow: var(--lm-shadow);
+  --accent: var(--lm-accent);
+  --input-bg: var(--lm-bg-light);
+
+  /* Bootstrap variable hooks for consistent theming */
+  --bs-body-bg: var(--bg);
+  --bs-body-color: var(--text);
+  --bs-card-bg: var(--bg-card);
+  --bs-card-color: var(--text);
+  --bs-border-color: var(--border);
+  --bs-link-color: #c1493f;
+  --bs-link-hover-color: #931f16;
+  --bs-navbar-bg: var(--bg-light);
+  --bs-navbar-color: var(--text);
+  --bs-btn-bg: var(--brand-primary);
+  --bs-btn-color: #ffffff;
+  --bs-btn-border-color: #931f16;
+
+  /* Brand + tier accents */
+  --brand-primary: #c1493f;   /* RedLine primary */
+  --brand-accent: #f97362;    /* RedLine accent */
+  --tier-free: #c1493f;       /* base tier tone */
+  --tier-team: #f97362;       /* accent tier tone */
+  --tier-enterprise: #8e2f27; /* deep tier tone */
+
+  /* Motion tokens */
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --dur-fast: 120ms;
+  --dur-med: 200ms;
+  --dur-slow: 320ms;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg: #f8fafc;
-    --surface: #ffffff;
-    --text: #0f172a;
-    --muted: #6b7280;
-    --brand: #dc2626;
-    --brand-weak: #b91c1c;
-    --border: #e5e7eb;
-  }
-}
+.dark-mode {
+  /* Switch semantic tokens to dark */
+  --bg: var(--dm-bg);
+  --bg-light: var(--dm-bg-light);
+  --bg-card: var(--dm-bg-card);
+  --text: var(--dm-text);
+  --text-muted: #a8b3bd;
+  --border: var(--dm-border);
+  --shadow: var(--dm-shadow);
+  --accent: var(--dm-accent);
+  --input-bg: var(--dm-input);
 
-* { box-sizing: border-box; }
-
-html, body, #root { height: 100%; }
-
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, Apple Color Emoji, Segoe UI Emoji;
-  color: var(--text);
-  background: radial-gradient(1200px 800px at 20% -20%, rgba(220, 38, 38, 0.18), transparent 60%), var(--bg);
+  color-scheme: dark;
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+  min-height: 100vh;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: var(--surface);
+/* Animation utilities */
+.fade-in { opacity: 0; transform: translateY(4px); animation: fadeIn var(--dur-med) var(--easing-standard) forwards; }
+.slide-up { opacity: 0; transform: translateY(12px); animation: slideUp var(--dur-slow) var(--easing-standard) forwards; }
+@keyframes fadeIn { to { opacity: 1; transform: none; } }
+@keyframes slideUp { to { opacity: 1; transform: none; } }
+
+.dark-mode .bg-light {
+  background-color: var(--bg-light) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode .navbar,
+.dark-mode .navbar.bg-primary {
+  background-color: var(--bg-light) !important;
+  color: var(--text) !important;
+  box-shadow: var(--shadow);
   border-bottom: 1px solid var(--border);
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.nav-container {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr; /* left brand, centered links, right actions */
-  align-items: center;
+.dark-mode .card {
+  background-color: var(--bg-card) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark mode form improvements */
+.dark-mode :where(input, textarea, select) {
+  background-color: var(--input-bg) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode :where(input, textarea)::placeholder { color: var(--text-muted) !important; opacity: 1; }
+
+.dark-mode :where(.form-label, label) {
+  color: var(--text) !important;
+}
+
+/* Optional: Add a subtle highlight on focus */
+.dark-mode :where(input:focus-visible, textarea:focus-visible, select:focus-visible) {
+  border-color: #f29686 !important;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(242, 150, 134, 0.3);
+}
+
+/* Interactive states */
+.dark-mode :where(button, .btn) {
+  background-color: var(--brand-primary);
+  color: var(--dm-text);
+  border: 1px solid #b33f36;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.dark-mode :where(button:hover, .btn:hover) {
+  background-color: var(--brand-accent);
+  color: var(--brand-primary);
+}
+
+/* Links */
+.dark-mode a {
+  color: #f5a498;
+  transition: color 0.2s;
+}
+
+.dark-mode a:hover {
+  color: #ffc7bc;
+  text-decoration: underline;
+}
+
+/* Light mode color palette */
+
+/* Optional light-mode class (default is light via :root mapping) */
+.light-mode {
+  color-scheme: light;
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.light-mode .bg-light {
+  background-color: var(--bg-light) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.light-mode .navbar,
+.light-mode .navbar.bg-primary {
+  background-color: var(--bg-light) !important;
+  color: var(--text) !important;
+  box-shadow: var(--shadow);
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.light-mode .card {
+  background-color: var(--bg-card) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light mode form improvements (tokenized) */
+.light-mode :where(input, textarea, select) {
+  background-color: var(--input-bg) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.light-mode :where(input, textarea)::placeholder { color: var(--text-muted) !important; opacity: 1; }
+
+.light-mode :where(input:focus-visible, textarea:focus-visible, select:focus-visible) {
+  border-color: color-mix(in oklab, var(--bs-link-color) 60%, var(--border)) !important;
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--bs-link-color) 25%, transparent);
+}
+
+/* Interactive states */
+.light-mode :where(button, .btn) {
+  background-color: var(--brand-primary);
+  color: #ffffff;
+  border: 1px solid #931f16;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.light-mode :where(button:hover, .btn:hover) {
+  background-color: var(--brand-accent);
+  color: var(--brand-primary);
+}
+
+/* Links */
+.light-mode a {
+  color: var(--bs-link-color);
+  transition: color 0.2s;
+}
+
+.light-mode a:hover {
+  color: var(--bs-link-hover-color);
+  text-decoration: underline;
+}
+
+/* Global typography scale */
+body { font-family: var(--font-sans); line-height: 1.6; }
+h1 { font-size: clamp(1.8rem, 1.2rem + 2.2vw, 2.5rem); }
+h2 { font-size: clamp(1.5rem, 1rem + 1.5vw, 2rem); }
+h3 { font-size: clamp(1.25rem, 0.9rem + 1vw, 1.5rem); }
+
+/* Improve focus visibility */
+:focus-visible { outline: 2px solid #f29686; outline-offset: 2px; }
+
+/* Form accent color */
+:root { accent-color: #c1493f; }
+
+/* PortalDashboard.css - Basic styling for the dashboard */
+.portal-dashboard {
+  font-family: var(--font-sans);
   max-width: 1200px;
   margin: 0 auto;
-  padding: 12px 20px;
-  gap: 12px;
+  padding: 20px;
+  background-color: var(--bg);
 }
 
-.nav-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.nav-logo {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  border-radius: 6px;
-}
-
-.brand-text { display: inline-grid; line-height: 1; font-weight: 800; letter-spacing: 0.5px; }
-.brand-text .brand-sub { font-size: 10px; font-weight: 600; color: var(--muted); letter-spacing: 1.1px; }
-
-.nav-links { display: flex; gap: 28px; justify-self: center; }
-
-.nav-link {
-  color: var(--muted);
-  text-decoration: none;
-  font-weight: 600;
-  padding: 8px 0;
-  transition: color 0.15s ease, opacity 0.15s ease;
-}
-.nav-link:hover { color: var(--text); }
-.nav-link.active { color: var(--text); }
-.nav-link .plus { color: var(--muted); margin-left: 4px; }
-
-.nav-actions { display: inline-flex; gap: 12px; justify-self: end; align-items: center; }
-.search-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px; height: 36px;
-  border-radius: 999px;
-  background: transparent;
-  border: 1px solid var(--border);
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 30px;
   color: var(--text);
 }
-.search-btn:hover { background: rgba(0,0,0,0.04); }
 
-.cta-btn {
-  text-decoration: none;
-  background: linear-gradient(135deg, var(--brand), var(--brand-weak));
-  color: white;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  padding: 10px 14px;
-  border-radius: 8px;
-}
-.cta-btn:hover { filter: brightness(1.05); }
-
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--muted);
-  font-size: 12px;
-}
-.status-badge .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(0,0,0,0.2);
-}
-.status-badge .status-text { display: none; }
-@media (min-width: 640px) { .status-badge .status-text { display: inline; } }
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 32px 20px 60px;
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 2.5em;
 }
 
-.lead { color: var(--muted); }
-
-.card-grid {
-  margin-top: 20px;
+.metrics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 16px 18px;
+.metric-card {
+  background: var(--bg-card);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  text-align: center;
 }
 
-.contact-form { display: grid; gap: 12px; max-width: 680px; }
-.contact-form .row { display: grid; gap: 12px; grid-template-columns: 1fr; }
-@media (min-width: 640px) { .contact-form .row { grid-template-columns: 1fr 1fr; } }
-.contact-form label { display: grid; gap: 6px; font-size: 14px; color: var(--muted); }
-.contact-form input, .contact-form textarea {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--text);
-  border-radius: 10px;
-  padding: 10px 12px;
-  font-size: 14px;
+.metric-card h2 {
+  margin: 0 0 10px;
+  font-size: 1.5em;
+  color: var(--bs-link-color);
 }
-.contact-form button {
-  background: linear-gradient(135deg, var(--brand), var(--brand-weak));
-  color: white;
-  border: 0;
-  border-radius: 10px;
-  padding: 10px 14px;
-  font-weight: 600;
-}
-.contact-form button:hover { filter: brightness(1.05); }
 
-button { cursor: pointer; }
+.metric-value {
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--brand-accent);
+  margin: 10px 0;
+}
+
+.metric-card small {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.details-section {
+  grid-column: 1 / -1;
+  background: var(--bg-card);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.loading, .error {
+  text-align: center;
+  font-size: 1.2em;
+  padding: 40px;
+}
+
+.error {
+  color: var(--brand-primary);
+}
+
+.dashboard-footer {
+  text-align: center;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+
+.coding-empty {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+}
+
+.coding-empty p {
+  margin-bottom: 0;
+}
+
+
+.navbar-brand__logo { height: 40px; width: auto; max-height: 40px; object-fit: contain; flex-shrink: 0; display: block; }
+@media (max-width: 576px) {
+  .navbar-brand__logo { height: 32px; }
+}
+
