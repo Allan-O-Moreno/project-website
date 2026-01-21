@@ -28,31 +28,6 @@
   "devDependencies": {
     "@testing-library/user-event": "^14.6.1",
     "eslint-plugin-react-hooks": "^6.1.1",
-    "@craco/craco": "^7.0.0",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/jest-dom": "^6.8.0"
-  },
-  "overrides": {
-    "@babel/plugin-proposal-class-properties": "npm:@babel/plugin-transform-class-properties@^7.25.9",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "npm:@babel/plugin-transform-nullish-coalescing-operator@^7.25.9",
-    "@babel/plugin-proposal-numeric-separator": "npm:@babel/plugin-transform-numeric-separator@^7.25.9",
-    "@babel/plugin-proposal-optional-chaining": "npm:@babel/plugin-transform-optional-chaining@^7.25.9",
-    "@babel/plugin-proposal-private-methods": "npm:@babel/plugin-transform-private-methods@^7.25.9",
-    "@babel/plugin-proposal-private-property-in-object": "npm:@babel/plugin-transform-private-property-in-object@^7.25.9",
-    "rollup-plugin-terser": "npm:@rollup/plugin-terser@^0.4.4",
-    "svgo": "^3.3.2",
-    "@svgr/plugin-svgo": "^8.1.0",
-    "@svgr/webpack": "^8.1.0",
-    "workbox-cacheable-response": "^7.1.0",
-    "workbox-google-analytics": "^7.1.0",
-    "glob": "^10.4.5",
-    "rimraf": "^5.0.5",
-    "eslint": "^9.12.0",
-    "@humanwhocodes/config-array": "^0.13.0",
-    "@humanwhocodes/object-schema": "^3.0.0",
-    "domexception": "^4.0.0",
-    "abab": "^2.0.6",
-    "source-map": "^0.7.4",
-    "sourcemap-codec": "^1.5.0"
+    "@craco/craco": "^7.0.0"
   }
 }
