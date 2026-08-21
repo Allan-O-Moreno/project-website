@@ -1,197 +1,113 @@
-// pages/Home.js - Updated for Redline Technical Services LLC
 import React from "react";
-import "./home.landing.css";
+import { Link } from "react-router-dom";
 
-const Home = () => {
-  const trustLogos = [
-    { src: "/images/nexoraAnalyticsLogo.png", alt: "Industrial Operator" },
-    { src: "/images/nexoraAnalyticsNavBarLogo.png", alt: "Utilities Partner" },
-    { src: "/images/nexoraAnalyticsLogo.png", alt: "Manufacturing Client" },
-    { src: "/images/nexoraAnalyticsNavBarLogo.png", alt: "Energy Producer" },
-    { src: "/images/nexoraAnalyticsLogo.png", alt: "Processing Facility" },
-  ];
+const capabilities = [
+  ["01", "Electrical Power Systems", "Distribution, switchgear, panels, service infrastructure, and reliable power from low through high voltage."],
+  ["02", "Automation & Controls", "PLC and HMI programming, control-panel fabrication, SCADA integration, and industrial network configuration."],
+  ["03", "Instrumentation & Calibration", "Installation and NIST-traceable calibration of sensors, transmitters, meters, and process instrumentation."],
+  ["04", "System Integration", "Equipment, sensors, controls, and communications unified into one accountable, high-performing system."],
+  ["05", "Commissioning & Startup", "Loop checks, cause-and-effect testing, startup troubleshooting, energization, and performance testing."],
+  ["06", "Maintenance & Outage Support", "Preventive maintenance, retrofits, planned turnarounds, and responsive 24/7 emergency support."],
+];
 
-  return (
-  <div className="nx-landing">
-    {/* Hero */}
-    <section className="nx-hero">
-      <div className="nx-hero__wrap">
-        <div className="fade-in" style={{ animationDelay: '40ms' }}>
-          <div className="nx-hero__eyebrow">Redline Technical Services LLC</div>
-          <h1 className="nx-hero__title">Electrical & automation specialists from design to maintenance</h1>
-          <p className="nx-hero__desc">Redline Technical Services LLC delivers electrical schematics, PLC/DCS/SCADA programming, commissioning, and lifecycle support that keep industrial facilities running with confidence.</p>
-          <div className="nx-hero__ctas">
-            <a className="nx-btn_primary" href="/contact">Schedule a consultation</a>
-            <a className="nx-btn_ghost" href="/services">See our services</a>
+const sectors = [
+  ["Geothermal & renewable power", "Ormat · Fervo · Cyrq · NextEra"],
+  ["Battery materials & manufacturing", "Redwood · Lilac · Polyglass"],
+  ["Oil, gas & refining", "Safety-Kleen · Golden Gate · Fulcrum"],
+  ["Mining & minerals", "Nevada Gold · Round Mountain · Mariana"],
+  ["Semiconductor & data center", "Bosch · Google Comstock"],
+  ["EV manufacturing", "Tesla / Pilot"],
+];
+
+const Footer = () => (
+  <footer className="rt-footer">
+    <div className="rt-shell rt-footer__grid">
+      <div className="rt-footer__brand">
+        <img src="/images/RedlineLogo2.png" alt="Redline Technical Services LLC" />
+        <strong className="rt-brand__text">Redline <small>Technical Services LLC</small></strong>
+      </div>
+      <div><span>Visit</span>5595 Tarzyn Rd<br />Fallon, NV 89406</div>
+      <div><span>Call</span><a href="tel:+17754006054">775-400-6054</a></div>
+      <div><span>Email</span><a href="mailto:Services@redline-ts.com">Services@redline-ts.com</a></div>
+      <div className="rt-footer__copyright">© {new Date().getFullYear()} Redline Technical Services LLC</div>
+    </div>
+  </footer>
+);
+
+const Home = () => (
+  <main className="rt-site">
+    <section className="rt-hero">
+      <div className="rt-shell rt-hero__grid">
+        <div className="rt-hero__copy">
+          <p className="rt-kicker">Work experience · Qualifications · Project references</p>
+          <h1>Industrial systems.<br /><em>Built to perform.</em></h1>
+          <p className="rt-hero__lead">Industrial electrical, instrumentation, controls, and commissioning across the Western United States.</p>
+          <div className="rt-actions">
+            <Link className="rt-button rt-button--red" to="/contact">Get a Quote <span>→</span></Link>
+            <Link className="rt-button rt-button--line" to="/services">Explore capabilities</Link>
           </div>
         </div>
-        <div className="nx-hero__media fade-in" style={{ animationDelay: '120ms' }}>
-          <img
-            src="/images/RedlineLogo2.png"
-            alt="Redline Technical Services logo"
-            loading="lazy"
-            decoding="async"
-            style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '12px', backgroundColor: 'var(--bg-card)', padding: '24px' }}
-          />
+        <div className="rt-hero__mark">
+          <img src="/images/redline-electrician-panel.jpg" alt="Redline technician working inside an electrical control panel" />
+          <p>Experienced technicians filling the gap between construction and engineering.</p>
         </div>
       </div>
-      <div className="nx-trust">
-        <div className="nx-trust__label">Trusted by industrial and utility partners</div>
-        <div className="nx-carousel" aria-label="Trusted logos carousel">
-          <div className="nx-carousel__track" role="list">
-            <div className="nx-logos" aria-hidden="false">
-              {trustLogos.map((l, idx) => (
-                <div className="nx-logo" role="listitem" key={`logo-a-${idx}`} >
-                  <img src={l.src} alt={l.alt} width="120" height="36" loading="lazy" decoding="async" />
-                </div>
-              ))}
-            </div>
-            <div className="nx-logos" aria-hidden="true">
-              {trustLogos.map((l, idx) => (
-                <div className="nx-logo" role="listitem" key={`logo-b-${idx}`} >
-                  <img src={l.src} alt="" aria-hidden="true" width="120" height="36" loading="lazy" decoding="async" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+      <div className="rt-shell rt-badges" aria-label="Credentials">
+        <span>NFPA 70E certified</span><span>NETA standards</span><span>NIST-traceable</span><span>Licensed · AZ · NV · UT</span>
       </div>
     </section>
 
-    {/* Highlights */}
-    <section className="nx-features">
-      <div className="nx-feature fade-in" style={{ animationDelay: '60ms' }}>
-        <div className="nx-feature__icon"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M3 5h18v2H3zm0 6h12v2H3zm0 6h18v2H3z"/></svg></div>
-        <div className="nx-feature__title">Comprehensive documentation</div>
-        <div className="nx-feature__desc">Electrical schematics, P&amp;IDs, and redline updates captured with precision to simplify installation and troubleshooting.</div>
-      </div>
-      <div className="nx-feature fade-in" style={{ animationDelay: '100ms' }}>
-        <div className="nx-feature__icon"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2l4 7h-8l4-7zm0 20l-4-7h8l-4 7zM2 12l7-4v8l-7-4zm20 0l-7 4V8l7 4z"/></svg></div>
-        <div className="nx-feature__title">Automation & control mastery</div>
-        <div className="nx-feature__desc">Expert PLC, DCS, VFD, SCADA, and HMI programming tailored to optimize performance and uptime.</div>
-      </div>
-      <div className="nx-feature fade-in" style={{ animationDelay: '140ms' }}>
-        <div className="nx-feature__icon"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M5 3h14v2H5zm0 4h14v6H5zm0 8h14v2H5v-2z"/></svg></div>
-        <div className="nx-feature__title">Lifecycle partnership</div>
-        <div className="nx-feature__desc">From commissioning through long-term maintenance, we stay engaged to keep power, controls, and safety systems performing.</div>
-      </div>
-    </section>
-
-    {/* Stats */}
-    <section className="nx-stats slide-up" style={{ animationDelay: '80ms' }}>
-      <div className="nx-stats__wrap">
-        <div className="nx-stat"><div className="nx-stat__num">25+</div><div className="nx-stat__label">Years combined field experience</div></div>
-        <div className="nx-stat"><div className="nx-stat__num">100%</div><div className="nx-stat__label">NIST-aligned calibrations</div></div>
-        <div className="nx-stat"><div className="nx-stat__num">24/7</div><div className="nx-stat__label">Facility support availability</div></div>
-        <div className="nx-stat"><div className="nx-stat__num">0</div><div className="nx-stat__label">Tolerance for downtime</div></div>
-      </div>
-    </section>
-
-    {/* Service areas */}
-    <section className="nx-integrations fade-in" style={{ animationDelay: '80ms' }}>
-      <h2>Core Service Areas</h2>
-      <div className="nx-integrations__grid">
-        <div className="nx-integration">Electrical schematic development</div>
-        <div className="nx-integration">Redline modification services</div>
-        <div className="nx-integration">PLC, DCS, VFD, SCADA &amp; HMI programming</div>
-        <div className="nx-integration">Instrumentation &amp; control design, field testing, and calibration</div>
-        <div className="nx-integration">P&amp;ID development</div>
-        <div className="nx-integration">Facility startup &amp; commissioning</div>
-        <div className="nx-integration">Long-term facility maintenance</div>
-        <div className="nx-integration">Medium &amp; low voltage power, control, and lighting</div>
-        <div className="nx-integration">Substations, switchgear &amp; MCC solutions</div>
-      </div>
-    </section>
-
-    {/* Testimonial */}
-    <section className="nx-testimonial fade-in" style={{ animationDelay: '120ms' }}>
-      <div className="nx-quote">"Redline delivered rock-solid schematics, tuned our PLCs, and stayed on-site through startup. They are our go-to partner for critical expansions."<small>Maintenance Manager, Gulf Coast Processing Plant</small></div>
-    </section>
-
-    {/* Resources */}
-    <section className="nx-resources">
-      <article className="nx-card fade-in" style={{ animationDelay: '60ms' }}>
-        <div className="nx-card__eyebrow">Checklist</div>
-        <div className="nx-card__title">Commissioning essentials for new control systems</div>
-        <a className="nx-card__cta" href="/insights">Download guide ?</a>
-      </article>
-      <article className="nx-card fade-in" style={{ animationDelay: '100ms' }}>
-        <div className="nx-card__eyebrow">Case study</div>
-        <div className="nx-card__title">How a refinery reduced downtime with proactive redlines</div>
-        <a className="nx-card__cta" href="/insights">Read story ?</a>
-      </article>
-      <article className="nx-card fade-in" style={{ animationDelay: '140ms' }}>
-        <div className="nx-card__eyebrow">Webinar</div>
-        <div className="nx-card__title">Designing NIST-aligned calibration programs</div>
-        <a className="nx-card__cta" href="/insights">Watch on-demand ?</a>
-      </article>
-    </section>
-
-    {/* CTA */}
-    <section className="nx-cta slide-up" style={{ animationDelay: '100ms' }}>
-      <div className="nx-cta__wrap">
+    <section className="rt-section rt-overview">
+      <div className="rt-shell rt-overview__grid">
         <div>
-          <div className="nx-cta__title">Ready to strengthen your electrical infrastructure?</div>
-          <div style={{ color: 'var(--text-muted)' }}>Partner with Redline Technical Services LLC for schematics, automation, commissioning, and maintenance you can trust.</div>
+          <p className="rt-kicker">Who we are</p>
+          <h2>Power and automation, handled end to end.</h2>
+          <p className="rt-intro">Redline Technical Services LLC is an electrical power and automation partner for industrial and commercial operations. We design, install, commission, and maintain the systems our clients depend on—engineered solutions grounded in rigorous standards, disciplined safety, and code-compliant execution.</p>
+          <Link className="rt-text-link" to="/about">Meet Redline <span>→</span></Link>
         </div>
-        <div className="nx-cta__actions">
-          <a className="nx-btn_primary" href="/contact">Talk with our team</a>
-          <a className="nx-btn_ghost" href="/services">View capabilities</a>
+        <div className="rt-metrics">
+          <article><strong>17</strong><span>Client references across NV, CA & UT</span></article>
+          <article><strong>6</strong><span>Industrial sectors served</span></article>
+          <article><strong>$3.3M+</strong><span>Referenced contract value</span></article>
+          <article><strong>3</strong><span>States licensed</span></article>
         </div>
       </div>
     </section>
 
-    {/* Footer */}
-    <footer className="nx-footer">
-      <div className="nx-footer__wrap">
-        <div className="nx-footer__grid">
-          <div className="nx-footer__col">
-            <h4>Services</h4>
-            <a className="nx-footer__link" href="/services#schematics">Electrical schematics</a>
-            <a className="nx-footer__link" href="/services#automation">PLC &amp; automation</a>
-            <a className="nx-footer__link" href="/services#commissioning">Startup &amp; commissioning</a>
-            <a className="nx-footer__link" href="/services#maintenance">Maintenance programs</a>
-          </div>
-          <div className="nx-footer__col">
-            <h4>Expertise</h4>
-            <a className="nx-footer__link" href="/services#instrumentation">Instrumentation &amp; controls</a>
-            <a className="nx-footer__link" href="/services#pid">P&amp;ID development</a>
-            <a className="nx-footer__link" href="/services#power">Medium &amp; low voltage power</a>
-            <a className="nx-footer__link" href="/services#substations">Substations &amp; switchgear</a>
-          </div>
-          <div className="nx-footer__col">
-            <h4>Support</h4>
-            <a className="nx-footer__link" href="/contact/form">Request support</a>
-            <a className="nx-footer__link" href="/contact/info">Company info</a>
-            <a className="nx-footer__link" href="/insights">Insights</a>
-            <a className="nx-footer__link" href="/docs">Documentation</a>
-          </div>
-          <div className="nx-footer__col">
-            <h4>Company</h4>
-            <a className="nx-footer__link" href="/about">About</a>
-            <a className="nx-footer__link" href="/about/team">Team</a>
-            <a className="nx-footer__link" href="/about/mission">Mission</a>
-            <a className="nx-footer__link" href="/about/values">Values</a>
-          </div>
-          <div className="nx-footer__col">
-            <h4>Standards</h4>
-            <a className="nx-footer__link" href="/insights">NIST alignment</a>
-            <a className="nx-footer__link" href="/insights">Safety practices</a>
-            <a className="nx-footer__link" href="/insights">Quality management</a>
-          </div>
+    <section className="rt-section rt-dark">
+      <div className="rt-shell">
+        <p className="rt-kicker">Capabilities</p>
+        <div className="rt-heading-row"><h2>One accountable partner.</h2><p>For the full electrical, automation, and instrumentation lifecycle.</p></div>
+        <div className="rt-cap-grid">
+          {capabilities.map(([num, title, copy]) => <article key={title}><span>{num}</span><h3>{title}</h3><p>{copy}</p></article>)}
         </div>
-        <div className="nx-footer__bottom">
-          <div>&copy; {new Date().getFullYear()} Redline Technical Services LLC</div>
-          <div className="nx-social" aria-label="Social links">
-            <a className="nx-social__link" href="https://www.linkedin.com/company/redline-technical-services/" aria-label="LinkedIn" title="LinkedIn">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0h4.8v2.2h.1c.7-1.3 2.4-2.7 5-2.7 5.4 0 6.4 3.6 6.4 8.3V24h-5v-7.1c0-1.7 0-3.9-2.4-3.9-2.4 0-2.8 1.8-2.8 3.8V24h-5V8z"/></svg>
-            </a>
-          </div>
+        <Link className="rt-button rt-button--red" to="/services">View all capabilities <span>→</span></Link>
+      </div>
+    </section>
+
+    <section className="rt-section rt-safety">
+      <div className="rt-shell rt-safety__grid">
+        <div className="rt-safety__headline"><p className="rt-kicker">Health & safety</p><h2>Safety is our number one priority.</h2></div>
+        <div className="rt-safety__copy"><p>Health and safety is not just a goal—it drives how we do business, and it is part of the quality guarantee we give every client.</p><ul><li>Qualified-worker training and strict PPE requirements</li><li>Daily safety reports and job-specific hazard analysis</li><li>Field audits and mandatory hazard reporting</li><li>Comprehensive root-cause analysis</li></ul></div>
+      </div>
+    </section>
+
+    <section className="rt-section rt-projects">
+      <div className="rt-shell">
+        <p className="rt-kicker">Project record</p>
+        <div className="rt-heading-row"><h2>Proven in demanding environments.</h2><Link className="rt-text-link" to="/insights">See project experience <span>→</span></Link></div>
+        <div className="rt-sector-grid">
+          {sectors.map(([title, clients]) => <article key={title}><i></i><div><h3>{title}</h3><p>{clients}</p></div></article>)}
         </div>
       </div>
-    </footer>
-  </div>
-  );
-};
+    </section>
 
+    <section className="rt-cta">
+      <div className="rt-shell"><p className="rt-kicker">Let's build it right.</p><h2>Bring your next facility online.<br />On schedule.</h2><Link className="rt-button rt-button--red" to="/contact">Talk with our team <span>→</span></Link></div>
+    </section>
+    <Footer />
+  </main>
+);
+
+export { Footer };
 export default Home;

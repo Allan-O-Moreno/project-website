@@ -1,49 +1,26 @@
-// pages/Insights.js - Field insights for Redline Technical Services LLC
-import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Footer } from "./Home";
 
-const Insights = () => {
-  const location = useLocation();
-  useEffect(() => {
-    if (location.hash) {
-      const id = location.hash.replace('#', '');
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }, [location]);
+const projects = [
+  ["Battery materials", "Redwood Materials", "Carson City, Nevada", "$1.4M", "Controls, instrumentation and electrical improvements across three first-of-their-kind battery recycling facilities."],
+  ["Geothermal & solar", "Ormat Technologies", "Western U.S. fleet", "$900K+", "Fleet-wide construction and operations support spanning turbine upgrades, solar fields, MV recovery and plant modernization."],
+  ["Geothermal · EGS", "Fervo Energy", "Milford, Utah", "Active", "Commissioning, calibration, Ignition HMI and Allen-Bradley controls for the largest EGS development in history."],
+  ["Renewable fuels", "Fulcrum Bioenergy", "Reno, Nevada", "$450K", "Process controls engineering, FAT/SAT, interlock testing, PID tuning and NIST-traceable calibration."],
+  ["Oil re-refining", "Safety-Kleen", "Fallon, Nevada", "$400K", "Turnkey E/I&C implementation, DeltaV integration, MCC upgrades and twice-yearly turnaround support."],
+  ["Solar & storage", "NextEra Energy", "Fernley, Nevada", "$150K", "800+ fiber splices and terminations, OTDR certification and battery-storage integration delivered ahead of schedule."],
+  ["Mining", "Nevada Gold Mines", "Northern Nevada", "Active", "Safety projects, control-panel builds and programming across Meikle, Rodeo and Twin Creeks operations."],
+  ["Semiconductor", "Bosch Semiconductor", "Roseville, California", "Complete", "I&C management and owner representation for a major U.S. semiconductor facility modernization."],
+];
 
-  return (
-  <div className="container py-5">
-    <h1 className="text-center mb-4">Insights & Field Notes</h1>
-    <p className="lead text-center">Guidance from Redline Technical Services LLC on schematics, automation, commissioning, and maintenance for industrial facilities.</p>
-    
-    <article className="blog-post" id="field-services" style={{ borderBottom: '1px solid #ddd', padding: '20px 0' }}>
-      <h3>Documenting and updating electrical drawings</h3>
-      <p><strong>Published:</strong> September 2025</p>
-      <p>Clear electrical schematics and timely redline modifications are the foundation for safe work. We share the checklist we use on-site to capture field deviations, validate point-to-point continuity, and deliver drawing packages that make future troubleshooting painless.</p>
-      <a href="/services#schematics">Explore our schematic services</a>
-    </article>
-    
-    <article className="blog-post" id="automation-best-practices" style={{ borderBottom: '1px solid #ddd', padding: '20px 0' }}>
-      <h3>Optimizing PLC, DCS, and HMI performance</h3>
-      <p><strong>Published:</strong> August 2025</p>
-      <p>From controller selection to HMI alarm strategies, our automation specialists outline how we program PLCs, DCS platforms, VFDs, and SCADA systems for reliability, maintainability, and operator clarity.</p>
-      <a href="/services#automation">See how we program automation platforms</a>
-    </article>
-    
-    <article className="blog-post" id="maintenance-programs" style={{ borderBottom: '1px solid #ddd', padding: '20px 0' }}>
-      <h3>Building resilient maintenance programs</h3>
-      <p><strong>Published:</strong> July 2025</p>
-      <p>Long-term success comes from disciplined calibration, NIST-aligned testing, and proactive upgrades. Learn how Redline designs maintenance schedules covering instrumentation, switchgear, MCCs, and facility lighting.</p>
-      <a href="/services#maintenance">Review our maintenance approach</a>
-    </article>
-
-    <footer className="bg-dark text-white text-center py-3 mt-5">
-      <p>&copy; {new Date().getFullYear()} Redline Technical Services LLC. All rights reserved. | <a href="/contact" className="text-white">Contact</a> | <a href="/insights" className="text-white">More insights</a></p>
-    </footer>
-  </div>
-  );
-};
-
+const Insights = () => (
+  <main className="rt-site rt-inner-page">
+    <header className="rt-page-hero"><div className="rt-shell"><p className="rt-kicker">Project experience</p><h1>Proven where<br /><em>failure isn't an option.</em></h1><p>Selected work across power generation, advanced manufacturing, refining, mining, data centers and EV production.</p></div></header>
+    <section className="rt-section rt-project-page"><div className="rt-shell"><div className="rt-project-grid">
+      {projects.map(([sector,name,location,value,copy]) => <article key={name}><p className="rt-kicker">{sector}</p><h2>{name}</h2><div className="rt-project-meta"><span>{location}</span><strong>{value}</strong></div><p>{copy}</p></article>)}
+    </div></div></section>
+    <section className="rt-cta"><div className="rt-shell"><p className="rt-kicker">Let's build it right.</p><h2>Experience that moves projects forward.</h2><Link className="rt-button rt-button--red" to="/contact">Request project references <span>→</span></Link></div></section>
+    <Footer />
+  </main>
+);
 export default Insights;
-

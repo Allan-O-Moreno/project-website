@@ -1,140 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState } from "react";
+import { Footer } from "./Home";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
-  const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const validate = () => {
-    const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.email.trim()) newErrors.email = 'Email is required';
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
-    if (!formData.subject.trim()) newErrors.subject = 'Subject is required';
-    if (!formData.message.trim()) newErrors.message = 'Message is required';
-    return newErrors;
-  };
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
-    setErrors({ ...errors, [e.target.id]: undefined });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-    setLoading(true);
-    // Simulate API call
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 1200);
-    // For real API: await axios.post('/api/contact', formData)
-  };
-
-  const location = useLocation();
-  useEffect(() => {
-    if (location.hash) {
-      const id = location.hash.replace('#', '');
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }, [location]);
-
-  return (
-    <div className="container py-5">
-      <h1 className="text-center mb-4" id="info">Contact Us</h1>
-      <p className="lead text-center">Reach out for project consultations, field support, or service requests.</p>
-      
-      {submitted && (
-        <div className="alert alert-success text-center" role="alert">
-          Thank you for contacting us! We'll get back to you soon.
-        </div>
-      )}
-
-      <form onSubmit={handleSubmit} id="form" className="row g-3" aria-label="Contact form" noValidate>
-        <div className="col-md-6">
-          <label htmlFor="name" className="form-label">Name</label>
-          <input
-            type="text"
-            className={`form-control${errors.name ? ' is-invalid' : ''}`}
-            id="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            aria-label="Your name"
-            aria-invalid={!!errors.name}
-          />
-          {errors.name && <div className="invalid-feedback">{errors.name}</div>}
-        </div>
-        <div className="col-md-6">
-          <label htmlFor="email" className="form-label">Email</label>
-          <input
-            type="email"
-            className={`form-control${errors.email ? ' is-invalid' : ''}`}
-            id="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            aria-label="Your email"
-            aria-invalid={!!errors.email}
-          />
-          {errors.email && <div className="invalid-feedback">{errors.email}</div>}
-        </div>
-        <div className="col-12">
-          <label htmlFor="subject" className="form-label">Subject</label>
-          <input
-            type="text"
-            className={`form-control${errors.subject ? ' is-invalid' : ''}`}
-            id="subject"
-            value={formData.subject}
-            onChange={handleChange}
-            required
-            aria-label="Subject"
-            aria-invalid={!!errors.subject}
-          />
-          {errors.subject && <div className="invalid-feedback">{errors.subject}</div>}
-        </div>
-        <div className="col-12">
-          <label htmlFor="message" className="form-label">Message</label>
-          <textarea
-            className={`form-control${errors.message ? ' is-invalid' : ''}`}
-            id="message"
-            rows="5"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            aria-label="Message"
-            aria-invalid={!!errors.message}
-          />
-          {errors.message && <div className="invalid-feedback">{errors.message}</div>}
-        </div>
-        <div className="col-12 text-center">
-          <button type="submit" className="btn btn-primary" disabled={loading}>
-            {loading ? (
-              <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-            ) : null}
-            Send Message
-          </button>
-        </div>
-      </form>
-
-      <footer className="bg-dark text-white text-center py-3 mt-5">
-        <p>
-          &copy; {new Date().getFullYear()} Redline Technical Services LLC. All rights reserved. |{' '}
-          <a href="/insights" className="text-white">Safety & compliance</a> |{' '}
-          <a href="/contact/info" className="text-white">Company info</a>
-        </p>
-      </footer>
-    </div>
-  );
+  const [sent, setSent] = useState(false);
+  const submit = (event) => { event.preventDefault(); setSent(true); };
+  return <main className="rt-site rt-inner-page">
+    <header className="rt-page-hero"><div className="rt-shell"><p className="rt-kicker">Let's build it right.</p><h1>Put Redline<br /><em>on your project.</em></h1><p>Tell us about your facility, schedule or service need. Our team will follow up to discuss the right technical approach.</p></div></header>
+    <section className="rt-section rt-contact"><div className="rt-shell rt-contact__grid">
+      <div><p className="rt-kicker">Contact Redline</p><h2>Start the conversation.</h2><div className="rt-contact-cards"><a href="tel:+17754006054"><span>Call</span>775-400-6054</a><a href="mailto:Services@redline-ts.com"><span>Email</span>Services@redline-ts.com</a><address><span>Visit</span>5595 Tarzyn Rd<br />Fallon, NV 89406</address></div></div>
+      <form onSubmit={submit} className="rt-form"><label>Name<input name="name" required /></label><label>Work email<input name="email" type="email" required /></label><label>Company<input name="company" /></label><label>Project type<select name="type" defaultValue=""><option value="" disabled>Select a capability</option><option>Electrical power systems</option><option>Automation & controls</option><option>Instrumentation & calibration</option><option>Commissioning & startup</option><option>Maintenance & outage support</option></select></label><label className="rt-form__wide">How can we help?<textarea name="message" rows="5" required /></label><button className="rt-button rt-button--red" type="submit">Send project details <span>→</span></button>{sent && <p className="rt-form__success" role="status">Thanks—your project details are ready to send. Connect this form to your preferred email or CRM endpoint before launch.</p>}</form>
+    </div></section>
+    <Footer />
+  </main>;
 };
-
 export default Contact;
